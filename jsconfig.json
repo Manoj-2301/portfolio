@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/Icons/*": [
+                "./public/icons/*"
+            ],
+            "@/Components/*": [
+                "./src/app/resources/components/*"
+            ],
+            "@/Datastream/*": [
+                "./src/app/resources/components/models/*"
+            ],
+            "@/Utils/*": [
+                "./src/app/resources/utils/*"
+            ],
+            "@/Providers/*": [
+                "./src/app/resources/providers/*"
+            ]
+        }
+    }
+}

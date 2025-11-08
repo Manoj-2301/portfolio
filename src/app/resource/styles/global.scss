@@ -1,0 +1,113 @@
+@use "./mixin.scss" as *;
+
+:root {
+    font-size: 16px;
+
+    @include desktop {
+        font-size: 16px;
+    }
+
+    @include mini {
+        font-size: 15.5px;
+    }
+
+    @include mobile {
+        font-size: 14px;
+    }
+
+    @include sm {
+        font-size: 13px;
+    }
+
+    @include xs {
+        font-size: 12px;
+    }
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    min-height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #fff;
+    font-family: $PrimaryFont;
+}
+
+html {
+    body {
+
+        * {
+            letter-spacing: .15px;
+            font-family: $PrimaryFont;
+        }
+
+        h1, h2, h3, h4, h5, h6, p, a, ul li, label {
+            margin-bottom: 0;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        button,
+        button:active,
+        button:focus,
+        input,
+        input:active,
+        input:focus,
+        textarea,
+        textarea:active,
+        textarea:focus,
+        input[type=submit]:active,
+        input[type=submit]:focus {
+            box-shadow: none;
+            border: 0;
+            outline: 0;
+            padding: 0;
+            background-color: transparent;
+            resize: vertical;
+            font-family: $PrimaryFont;
+        }
+
+        /* ✅ Remove number input arrows */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            appearance: none;
+            margin: 0;
+        }
+
+        /* ✅ Fix Chrome Autofill Background & Text */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-text-fill-color: #000 !important; /* your text color */
+            box-shadow: 0 0 0 1000px #fff inset !important; /* your input background */
+            background-color: transparent !important;
+            transition: background-color 0s ease-in-out 0s;
+        }
+
+        input[type="password"] {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+        }
+
+        a {
+            text-decoration: none !important;
+            font-family: $PrimaryFont;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        img {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+}
