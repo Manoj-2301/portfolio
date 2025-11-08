@@ -1,4 +1,4 @@
-@use "./mixin.scss" as *;
+@use "./mixin" as *;
 
 :root {
     font-size: 16px;
@@ -33,18 +33,26 @@ body {
     width: 100%;
     overflow-x: hidden;
     background-color: #fff;
-    font-family: $PrimaryFont;
+    
 }
 
 html {
     body {
-
         * {
-            letter-spacing: .15px;
-            font-family: $PrimaryFont;
+            letter-spacing: 0.15px;
+            
         }
 
-        h1, h2, h3, h4, h5, h6, p, a, ul li, label {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        a,
+        ul li,
+        label {
             margin-bottom: 0;
         }
 
@@ -61,15 +69,15 @@ html {
         textarea,
         textarea:active,
         textarea:focus,
-        input[type=submit]:active,
-        input[type=submit]:focus {
+        input[type="submit"]:active,
+        input[type="submit"]:focus {
             box-shadow: none;
             border: 0;
             outline: 0;
             padding: 0;
             background-color: transparent;
             resize: vertical;
-            font-family: $PrimaryFont;
+            
         }
 
         /* ✅ Remove number input arrows */
@@ -91,12 +99,14 @@ html {
         }
 
         input[type="password"] {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+            font-family:
+                -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",
+                sans-serif !important;
         }
 
         a {
             text-decoration: none !important;
-            font-family: $PrimaryFont;
+            ;
         }
 
         ul {
