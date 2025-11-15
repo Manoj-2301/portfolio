@@ -1,0 +1,181 @@
+/* === Stars === */
+.environment-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+  animation: starsMove 300s linear infinite;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+/* === Parallax Hills === */
+.environment-hill {
+  position: absolute;
+  bottom: 0;
+  width: 200%;
+  height: 150px;
+  background-repeat: repeat-x;
+  background-size: contain;
+  animation: moveHills 100s linear infinite;
+  z-index: 2;
+
+  &.hill1 {
+    opacity: 0.4;
+    animation-duration: 120s;
+    /* set your hill image with background-image */
+    /* background-image: url('/hills-layer1.svg'); */
+  }
+
+  &.hill2 {
+    opacity: 0.2;
+    animation-duration: 180s;
+    /* background-image: url('/hills-layer2.svg'); */
+  }
+}
+
+/* === particles === */
+.environment-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 50% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 20%);
+  background-size: 200% 200%;
+  animation: floatParticles 60s linear infinite;
+  z-index: 0;
+}
+
+/* animations */
+@keyframes starsMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+@keyframes moveHills {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 0;
+  }
+}
+@keyframes floatParticles {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+// .clouds {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 200%;
+//   height: 100vh;
+//   pointer-events: none;
+//   overflow: hidden;
+//   z-index: 3;
+//   --cloud-speed-mult: 1;
+// }
+
+// /* Base cloud style */
+// .cloud {
+//   position: absolute;
+//   background: rgba(255, 255, 255, 0.9);
+//   filter: blur(14px);
+//   border-radius: 50%;
+//   opacity: 0.55;
+//   animation-timing-function: linear;
+//   animation-iteration-count: infinite;
+// }
+
+// /* Cloud variations (different sizes + speeds) */
+// .cloud--a {
+//   width: 350px;
+//   height: 120px;
+//   top: 10vh;
+//   animation-name: cloudLoopA;
+//   animation-duration: calc(70s * var(--cloud-speed-mult));
+// }
+
+// .cloud--b {
+//   width: 500px;
+//   height: 160px;
+//   top: 18vh;
+//   opacity: 0.45;
+//   animation-name: cloudLoopB;
+//   animation-duration: calc(110s * var(--cloud-speed-mult));
+// }
+
+// .cloud--c {
+//   width: 280px;
+//   height: 100px;
+//   top: 26vh;
+//   opacity: 0.35;
+//   animation-name: cloudLoopC;
+//   animation-duration: calc(55s * var(--cloud-speed-mult));
+// }
+
+// .cloud--d {
+//   width: 600px;
+//   height: 200px;
+//   top: 5vh;
+//   opacity: 0.28;
+//   animation-name: cloudLoopD;
+//   animation-duration: calc(140s * var(--cloud-speed-mult));
+// }
+
+// /* Infinite loop keyframes */
+// @keyframes cloudLoopA {
+//   0% {
+//     transform: translateX(-120%);
+//   }
+//   100% {
+//     transform: translateX(120%);
+//   }
+// }
+
+// @keyframes cloudLoopB {
+//   0% {
+//     transform: translateX(-150%);
+//   }
+//   100% {
+//     transform: translateX(150%);
+//   }
+// }
+
+// @keyframes cloudLoopC {
+//   0% {
+//     transform: translateX(-100%);
+//   }
+//   100% {
+//     transform: translateX(100%);
+//   }
+// }
+
+// @keyframes cloudLoopD {
+//   0% {
+//     transform: translateX(-180%);
+//   }
+//   100% {
+//     transform: translateX(180%);
+//   }
+// }
+
+// /* Night clouds should dim */
+// .main-container.night .cloud {
+//   opacity: 0.22;
+//   filter: blur(10px) brightness(0.7);
+// }

@@ -1,0 +1,26 @@
+/* === Themes === */
+.morning {
+  background: linear-gradient(-45deg, #ffd194, #d1913c, #fff4e0, #ffe29f);
+  background-size: 400% 400%;
+  color: #333;
+  animation: moveGradient 20s ease infinite;
+}
+
+.afternoon {
+  background: linear-gradient(120deg, #a1c4fd, #c2e9fb, #89f7fe, #66a6ff);
+  background-size: 400% 400%;
+  color: #1e293b;
+  animation: moveGradient 25s ease infinite;
+}
+
+.evening {
+  background: linear-gradient(-45deg, #fcb045, #fd1d1d, #833ab4, #6a11cb);
+  background-size: 400% 400%;
+  color: #fff;
+  animation: moveGradient 30s ease infinite;
+}
+
+.night {
+  background: linear-gradient(135deg, #0f0f23 0%, #1e1b4b 50%, #312e81 100%);
+  color: #e0e0e0;
+}

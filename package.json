@@ -9,11 +9,13 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "gsap": "^3.13.0",
     "next": "16.0.1",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "sass": "^1.93.3",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "suncalc": "^1.9.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

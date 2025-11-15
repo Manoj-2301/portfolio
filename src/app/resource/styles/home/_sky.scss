@@ -1,0 +1,170 @@
+// .sky-object {
+//   position: absolute;
+//   width: 120px;
+//   height: 120px;
+//   border-radius: 50%;
+//   z-index: 5;
+//   transition:
+//     transform 3s ease-in-out,
+//     opacity 2s ease;
+//   opacity: 1;
+// }
+
+// /* Sun + Moon visuals */
+// .sun {
+//   background: radial-gradient(circle at center, #ffd700, #ffa500);
+//   box-shadow: 0 0 40px 10px rgba(255, 215, 0, 0.6);
+// }
+
+// .moon {
+//   background: radial-gradient(circle at 30% 30%, #f4f4f4, #bdbdbd);
+//   box-shadow: 0 0 25px 8px rgba(255, 255, 255, 0.3);
+
+//   &::after {
+//     content: "";
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//     border-radius: 50%;
+//     background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), transparent 70%);
+//     animation: glowPulse 3s ease-in-out infinite alternate;
+//   }
+// }
+
+// /* -=- REAL ORBIT POSITIONS -=- */
+
+// /* Hide when below horizon */
+// .below-horizon {
+//   opacity: 0;
+//   transform: translate(-50%, 100%);
+// }
+
+// /* Morning: Sun rising from far bottom-left */
+// .sun.morning-position {
+//   transform: translate(-40vw, 40vh);
+// }
+
+// /* Afternoon: Sun on top arc */
+// .sun.afternoon-position {
+//   transform: translate(0vw, -30vh);
+// }
+
+// /* Evening: Sun setting bottom-right */
+// .sun.evening-position {
+//   transform: translate(40vw, 40vh);
+// }
+
+// /* ------ Moon cycle ------ */
+
+// /* Night peak (moon high arc) */
+// .moon.night-position {
+//   transform: translate(0vw, -35vh);
+// }
+
+// /* Evening moon rising from bottom-right */
+// .moon.evening-position {
+//   transform: translate(40vw, 40vh);
+// }
+
+// /* Moon setting bottom-left (after night) */
+// .moon.morning-position {
+//   transform: translate(-40vw, 40vh);
+// }
+
+/* sky.scss - sun & moon visuals / defaults */
+
+.sky-object {
+  position: absolute;
+  left: 50%; /* GSAP will adjust xPercent */
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  z-index: 6;
+  pointer-events: none;
+  transition: box-shadow 0.5s ease;
+}
+
+/* Sun visual (identical colors to yours) */
+.sun {
+  background: radial-gradient(circle at center, #ffd700, #ffa500);
+  box-shadow: 0 0 40px 10px rgba(255, 215, 0, 0.6);
+}
+
+/* Moon visual */
+/* Moon rendering based on CSS variables set by JS */
+.moon {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  z-index: 6;
+  pointer-events: none;
+  background: radial-gradient(circle at 35% 30%, #fefefe 0%, #d9d9d9 45%, #bdbdbd 100%);
+  box-shadow:
+    0 0 20px 6px rgba(255, 255, 255, 0.12),
+    inset -6px -6px 20px rgba(0, 0, 0, 0.06);
+  overflow: visible;
+  /* default rotation (tilt) applied by JS via --moon-angle */
+  transform-origin: 50% 50%;
+}
+
+/* The overlay that cuts the moon into crescent/gibbous */
+.moon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+
+  /* We'll create the dark part by placing a circle of background color
+     slightly offset. We'll use the --moon-fraction and --moon-phase to compute offset. */
+
+  /* fraction: 0..1, phase: 0..1
+     We compute an offset where 0 = new moon (full dark), 0.5 = full moon (no dark),
+     and >0.5 moves the overlay to the other side (waning/waxing).
+  */
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(0, 0, 0, 0) calc(var(--moon-fraction) * 100%),
+    rgba(0, 0, 0, 0.6) calc(var(--moon-fraction) * 100% + 1%)
+  );
+  mix-blend-mode: multiply;
+  transform: translateX(calc((var(--moon-phase) - 0.5) * 140%)) rotate(calc(var(--moon-angle)));
+  transition:
+    transform 0.7s ease,
+    background 0.7s ease;
+}
+
+/* If you want the moon to always have a soft glow at night */
+.main-container.night .moon {
+  box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.06);
+}
+
+@keyframes glowPulse {
+  from {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* small utility for fade-in used by component */
+.animate-fadeIn {
+  animation: fadeIn 1.6s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
